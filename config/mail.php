@@ -107,4 +107,16 @@ return [
         ],
     ],
 
+    /*
+    |--------------------------------------------------------------------------
+    | Global "Reply To" Address
+    |--------------------------------------------------------------------------
+    |
+    | You may wish for all e-mails sent by your application to have reply to
+    | the same address. Here, you may specify a name and address that is
+    | used globally for all e-mails that are sent by your application.
+    |
+    */
+
+    'reply_to' => ['address' => 'uday.karkera@gmail.com', 'name' => 'Basic Udu'],
 ];

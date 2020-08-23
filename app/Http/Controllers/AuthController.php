@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\SignupWelcome;
 
 class AuthController extends Controller
 {
@@ -29,6 +31,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->password)
         ]);
         $user->save();
+
         return response()->json([
             'message' => 'Successfully created user!'
         ], 201);
@@ -91,6 +94,7 @@ class AuthController extends Controller
      */
     public function user(Request $request)
     {
+        Mail::to($request->user())->send(new SignupWelcome($request->user()->name));
         return response()->json($request->user());
     }
 }
